@@ -1,7 +1,6 @@
 import { defAxios as request } from '@/utils/http'
 
 export function getUsers(params = {}) {
-  console.log('getUsers')
   return request({
     url: '/users',
     method: 'get',
@@ -10,7 +9,6 @@ export function getUsers(params = {}) {
 }
 
 export function getUser(id) {
-  console.log('getUser')
   if (id) {
     return request({
       url: `/user/${id}`,

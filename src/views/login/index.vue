@@ -88,48 +88,12 @@ async function handleLogin() {
     }
     if (query.redirect) {
       const path = query.redirect
-      console.log(path)
       Reflect.deleteProperty(query, 'redirect')
       router.push({ path, query })
     } else {
-      console.log('目前走的path是‘/’')
       router.push('/')
     }
   }).catch(err => console.log(err))
-  /*
-  try {
-    const res = await login({ username, password: password.toString() })
-    console.log(res)
-    if (res.code === 1001) {
-      console.log("code == 1001")
-      // useStore.setUserInfo({
-      //   // id : 1,
-      //   // username : 'abc',
-      //   avatar : 'http://www.baidu.com/1.gif'
-      // });
-      $message.success('登录成功')
-      // setToken(res.data.token)
-      console.log(res.data.token)
-      if (isRemember.value) {
-        lStorage.set('loginInfo', { username, password })
-      } else {
-        lStorage.remove('loginInfo')
-      }
-      if (query.redirect) {
-        const path = query.redirect
-        console.log(path)
-        Reflect.deleteProperty(query, 'redirect')
-        router.push({ path, query })
-      } else {
-        console.log('目前走的path是‘/’')
-        router.push('/')
-      }
-    } else {
-      $message.warning(res.message)
-    }
-  } catch (error) {
-    $message.error(error.message)
-  }*/
 }
 </script>
 

@@ -9,7 +9,7 @@ import { lStorage } from '@/utils/cache'
 export const useUserStore = defineStore('user', {
   state: () => {
     return {
-      userInfo: lStorage.get('yangshuo') || {},
+      userInfo: lStorage.get('userInfo') || {},
     }
   },
   getters: {
@@ -37,6 +37,7 @@ export const useUserStore = defineStore('user', {
                     setToken(token);
                     console.log(`Get token=${token}, ready get res...`)
                     console.log(`Get res=${JSON.stringify(res)}, ready get userInfo...`)
+                    console.log(this)
                     return this.getUserInfo()
                   } else {
                     $message.warning("登陆失败")
@@ -45,7 +46,7 @@ export const useUserStore = defineStore('user', {
               })
               .then(userInfo => {
                   console.log(`Get userInfo = ${JSON.stringify(userInfo)}`);
-                  lStorage.set('Yangshuo', userInfo, 3600 * 6);
+                  lStorage.set('userInfo', userInfo, 3600 * 6);
                   console.log('Set userInfo to storage');
                   resolve(userInfo);
               })
